@@ -1,0 +1,14 @@
+# Online status tracking (OST) configuration file
+rmsSlopeWin = 0.030000
+
+# Main section: Heuristic rules for tracking
+# starting_stat_value mode_of_tracking intensity_threshold min_hold_duration {}
+n = 4
+0 INTENSITY_RISE_HOLD 0.02 0.05 {} # Detect voicing onset for at least 20ms
+2 ELAPSED_TIME 0.3 NaN {}   # Formant shift 1, 300ms after VOT
+3 ELAPSED_TIME 0.75 NaN {}   # Masking noise, 750ms after Formant shift 1
+4 OST_END NaN NaN {} #sustained Formant shift 1 maintained, Masking noise removed at end of trial
+
+# maxIOICfg 
+n = 0
+# 0 1 2 #if voicing isn't detected (status 0) for 1 second do perturbation(status 2)
