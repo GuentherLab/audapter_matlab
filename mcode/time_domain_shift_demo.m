@@ -33,10 +33,11 @@ if ~isempty(fsic(varargin, '--save_wav'))
 end
 
 algorithm = '';
-if ~isempty(fsic(varargin, '--pp_peaks'))
-    algorithm = 'pp_peaks';
-elseif ~isempty(fsic(varargin, '--pp_valleys'))
-    algorithm = 'pp_valleys';
+if ~isempty(fsic(varargin, '--algorithm'))
+    algorithm = varargin{fsic(varargin, '--algorithm') + 1};
+    if strcmp(algorithm, {'pp_peaks'; 'pp_valleys'}) == 0
+        error('%s is not a valid algorithm. Leave --algorithm <ALGORITHM> empty for ''pp_none'' or specify ''pp_peaks'' or ''pp_valleys''.', algorithm);
+    end
 end
 
 %% Get parameters for time-domain shifting.
