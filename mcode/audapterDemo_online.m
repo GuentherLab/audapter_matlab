@@ -1,6 +1,6 @@
 function audapterDemo_online(mode, varargin)
 %% Configurations
-audioInterfaceName = 'MOTU MicroBook';
+audioInterfaceName = 'Focusrite USB ASIO';
 
 sRate = 48000;  % Hardware sampling rate (before downsampling)
 downFact = 3;
